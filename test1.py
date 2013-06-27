@@ -32,10 +32,20 @@ class Example(QtGui.QMainWindow):
         qbtn.resize(qbtn.sizeHint())
         qbtn.move(50, 50)
 
+        qbtn = QtGui.QPushButton('Press ME', self)
+        qbtn.clicked.connect(self.println)
+        qbtn.resize(qbtn.sizeHint())
+        qbtn.move(40, 200)
+
         qbtn = QtGui.QPushButton('Print', self)
         qbtn.clicked.connect(self.println)
         qbtn.resize(qbtn.sizeHint())
         qbtn.move(50, 100)
+
+        qbtn = QtGui.QPushButton('Surprise Me', self)
+        qbtn.clicked.connect(self.surprise)
+        qbtn.resize(qbtn.sizeHint())
+        qbtn.move(50, 50)
 
         qbtn = QtGui.QPushButton('testbutton', self)
         qbtn.clicked.connect(self.println)
@@ -44,6 +54,12 @@ class Example(QtGui.QMainWindow):
         
         qbtn = QtGui.QPushButton('remove some from >', self)
         qbtn.clicked.connect(self.removeSomeItems)
+        self.setWindowTitle('HELLOOOOOO - Hurray Sublime Auto Complete')
+        self.setGeometry(300, 300, 250, 150)
+        self.setWindowIcon(QtGui.QIcon('ic.png'))
+
+        qbtn = QtGui.QPushButton('another button', self)
+        qbtn.clicked.connect(self.println)
         qbtn.resize(qbtn.sizeHint())
         qbtn.move(50, 250)
 
@@ -67,6 +83,20 @@ class Example(QtGui.QMainWindow):
     def println(self):
         print("HELLOOOOOO")
 
+        # I don't know how all this works
+        qtlabel = QtGui.QLabel("HI", self)
+        qtLabel.move(40, 40)
+
+    def surprise(self):
+        self.setWindowTitle('SURPRISESEE!')
+        self.setGeometry(300, 300, 500, 230)
+
+
+
+    # def closeEvent(self, event):
+        
+    #     reply = QtGui.QMessageBox.question(self, 'Message', "Are you sure to quit?", QtGui.QMessageBox.Yes | QtGui.QMessageBox.No, QtGui.QMessageBox.No)
+
     def removeSomeItems(self):
         for i in range(1, 30):
             if i % 2 == 0:
@@ -74,7 +104,6 @@ class Example(QtGui.QMainWindow):
 
 
 def main():
-    
     app = QtGui.QApplication(sys.argv)
     ex = Example()
     sys.exit(app.exec_())
