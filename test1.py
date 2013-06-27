@@ -24,6 +24,9 @@ class Example(QtGui.QMainWindow):
         
         self.setToolTip('This is a <b>QWidget</b> widget')
 
+        self.listWidget = QtGui.QListWidget(self)
+        self.listWidget.setGeometry(QtCore.QRect(200, 200, 221, 91))
+
         qbtn = QtGui.QPushButton('Quit', self)
         qbtn.clicked.connect(QtCore.QCoreApplication.instance().quit)
         qbtn.resize(qbtn.sizeHint())
@@ -39,10 +42,18 @@ class Example(QtGui.QMainWindow):
         qbtn.resize(qbtn.sizeHint())
         qbtn.move(100, 150)
         
-        qbtn = QtGui.QPushButton('another button', self)
-        qbtn.clicked.connect(self.println)
+        qbtn = QtGui.QPushButton('remove some from >', self)
+        qbtn.clicked.connect(self.removeSomeItems)
         qbtn.resize(qbtn.sizeHint())
         qbtn.move(50, 250)
+
+        self.listWidget.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
+        self.listWidget.setSelectionMode(QtGui.QAbstractItemView.MultiSelection)
+        self.listWidget.setTextElideMode(QtCore.Qt.ElideRight)
+        self.listWidget.setUniformItemSizes(False)
+        self.listWidget.setSelectionRectVisible(False)
+        self.listWidget.setObjectName("listWidget")
+
 
         self.statusBar()
 
@@ -50,8 +61,16 @@ class Example(QtGui.QMainWindow):
         self.setWindowTitle('Statusbar')    
         self.show()
 
+        for i in range (1, 30):
+            self.listWidget.addItem(QtGui.QListWidgetItem("test item " + str(i)))
+
     def println(self):
         print("HELLOOOOOO")
+
+    def removeSomeItems(self):
+        for i in range(1, 30):
+            if i % 2 == 0:
+                self.listWidget.takeItem(i)
 
 
 def main():
