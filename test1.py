@@ -33,8 +33,13 @@ class Example(QtGui.QMainWindow):
         qbtn.clicked.connect(self.println)
         qbtn.resize(qbtn.sizeHint())
         qbtn.move(50, 100)
+
+        qbtn = QtGui.QPushButton('Surprise Me', self)
+        qbtn.clicked.connect(self.surprise)
+        qbtn.resize(qbtn.sizeHint())
+        qbtn.move(50, 50)
         
-        self.setWindowTitle('Icon')
+        self.setWindowTitle('HELLOOOOOO - Hurray Sublime Auto Complete')
         self.setGeometry(300, 300, 250, 150)
         self.setWindowIcon(QtGui.QIcon('ic.png'))
 
@@ -52,6 +57,12 @@ class Example(QtGui.QMainWindow):
     def println(self):
         print("HELLOOOOOO")
 
+    def surprise(self):
+        self.setWindowTitle('SURPRISESEE!')
+        self.setGeometry(300, 300, 500, 230)
+
+
+
     # def closeEvent(self, event):
         
     #     reply = QtGui.QMessageBox.question(self, 'Message', "Are you sure to quit?", QtGui.QMessageBox.Yes | QtGui.QMessageBox.No, QtGui.QMessageBox.No)
@@ -63,7 +74,6 @@ class Example(QtGui.QMainWindow):
 
 
 def main():
-    
     app = QtGui.QApplication(sys.argv)
     ex = Example()
     sys.exit(app.exec_())
