@@ -33,33 +33,25 @@ class Example(QtGui.QMainWindow):
         qbtn.clicked.connect(self.println)
         qbtn.resize(qbtn.sizeHint())
         qbtn.move(50, 100)
+
+        qbtn = QtGui.QPushButton('testbutton', self)
+        qbtn.clicked.connect(self.println)
+        qbtn.resize(qbtn.sizeHint())
+        qbtn.move(100, 150)
         
-        self.setWindowTitle('Icon')
-        self.setGeometry(300, 300, 250, 150)
-        self.setWindowIcon(QtGui.QIcon('ic.png'))
+        qbtn = QtGui.QPushButton('another button', self)
+        qbtn.clicked.connect(self.println)
+        qbtn.resize(qbtn.sizeHint())
+        qbtn.move(50, 250)
 
         self.statusBar()
-        
-        menubar = self.menuBar()
-        fileMenu = menubar.addMenu('&File')
-        fileMenu.addAction(exitAction)
-        fileMenu.addAction(printaction)
 
-        self.setGeometry(300, 300, 250, 150)
+        self.setGeometry(300, 300, 700, 500)
         self.setWindowTitle('Statusbar')    
         self.show()
 
     def println(self):
         print("HELLOOOOOO")
-
-    # def closeEvent(self, event):
-        
-    #     reply = QtGui.QMessageBox.question(self, 'Message', "Are you sure to quit?", QtGui.QMessageBox.Yes | QtGui.QMessageBox.No, QtGui.QMessageBox.No)
-
-    #     if reply == QtGui.QMessageBox.Yes:
-    #         event.accept()
-    #     else:
-    #         event.ignore()
 
 
 def main():
